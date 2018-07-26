@@ -3,6 +3,7 @@ package com.company;
 import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.LinkedList;
+import java.util.Stack;
 
 public class Main {
 
@@ -196,5 +197,39 @@ class Solution003III{
         arr[0] = tmp;
 
         return arr;
+    }
+}
+
+class Solution004{
+    Stack<Integer> numbers = new Stack<>();
+
+    public int calPoints(String[] ops) {
+        int sum = 0;
+
+        for(int i = 0; i < ops.length; i++){
+            if(ops[i].equals("D")){                       //double
+                int duo = numbers.peek() * 2;
+                sum = sum + duo;
+                numbers.push(duo);
+            }
+            else if(ops[i].equals("C")){                   //cancel previous
+                int substract = numbers.pop();
+                sum = sum - substract;
+            }
+            else if(ops[i].equals("+")){                   //add previous two
+                int first = numbers.pop();
+                int second = numbers.pop();
+                sum = sum + first + second;
+                numbers.push(second);
+                numbers.push(first);
+                numbers.push(first + second);
+            }
+            else{                                          //Integer just add
+                sum = sum + Integer.parseInt(ops[i]);
+                numbers.push(Integer.parseInt(ops[i]));
+            }
+        }
+
+        return sum;
     }
 }
