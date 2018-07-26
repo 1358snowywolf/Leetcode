@@ -185,6 +185,7 @@ class Solution003III{
         }
     }
 
+    // this is just for fun
     private int[] shiftOne(int[] arr){
         int tmp = arr[arr.length - 1];
 
