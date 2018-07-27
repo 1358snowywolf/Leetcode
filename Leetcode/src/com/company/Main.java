@@ -6,10 +6,17 @@ import java.util.*;
 public class Main {
 
     public static void main(String[] args) {
-        int[] arr = new int[]{1, 2, 3, 4};
-        int k = 3;
-        Solution003IV ha = new Solution003IV();
-        ha.rotate(arr, k);
+//        int[] arr = new int[]{1, 2, 3, 4};
+//        int k = 3;
+//        Solution003IV ha = new Solution003IV();
+//        ha.rotate(arr, k);
+        SolutionTest test = new SolutionTest();
+        int[] arr = {1, 10};
+        int input = 10;
+
+        test.callbyreference(arr);
+        test.callbyvalue(input);
+
     }
 }
 
@@ -300,5 +307,18 @@ class Solution599II{
         }
 
         return result.toArray(new String[result.size()]);
+    }
+}
+
+class SolutionTest {
+    public void callbyreference(int[] array) {
+        if (array.length >0) {
+
+            array[0] += 10;
+        }
+    }
+
+    public void callbyvalue(int a) {
+        a += 10;
     }
 }
