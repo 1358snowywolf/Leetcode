@@ -1,6 +1,5 @@
 package com.company;
 
-
 import java.util.*;
 
 public class Main {
@@ -253,6 +252,7 @@ class Solution004{
                 numbers.push(Integer.parseInt(ops[i]));
             }
         }
+        // just for kicks
 
         return sum;
     }
@@ -307,6 +307,82 @@ class Solution599II{
         }
 
         return result.toArray(new String[result.size()]);
+    }
+}
+
+class Solution155{
+    Stack<Integer> stack;
+
+    public Solution155(){
+        stack = new Stack<>();
+    }
+
+    public void push(int x){
+        stack.push(x);
+    }
+
+    public void pop(){
+        stack.pop();
+    }
+
+    public int top(){
+        return stack.peek();
+    }
+
+    public int getMin(){
+        int min = Integer.MAX_VALUE;
+        List<Integer> numbers = new LinkedList<>();
+
+        while(!stack.empty()){
+            int pop = stack.pop();
+            if(pop < min){
+                min = pop;
+            }
+            ((LinkedList<Integer>) numbers).addFirst(pop);
+        }
+
+        for(int i = 0; i < numbers.size(); i++){
+            stack.push(numbers.get(i));
+        }
+
+        return min;
+    }
+}
+
+class Solution155II{
+    Stack<Integer> stack;
+    List<Integer> min;
+
+    public Solution155II(){
+        stack = new Stack<>();
+        min = new LinkedList<>();
+    }
+
+    public void push(int x){
+        stack.push(x);
+
+        for(int i = 0; i < min.size(); i++){
+            if(min.get(i) > x){
+                min.add(i - 1, x);
+            }
+        }
+    }
+
+    public void pop(){
+        int pop = stack.pop();
+
+        min.remove(pop);
+    }
+
+    public int top(){
+        return stack.peek();
+    }
+
+    public int getMin(){
+        if(!stack.empty()){
+            return min.get(0);
+        }
+        return -1;
     }
 }
 
