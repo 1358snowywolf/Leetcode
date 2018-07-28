@@ -1,20 +1,21 @@
 package com.company;
 
+import javax.print.attribute.IntegerSyntax;
 import java.util.*;
 
 public class Main {
 
     public static void main(String[] args) {
-//        int[] arr = new int[]{1, 2, 3, 4};
-//        int k = 3;
-//        Solution003IV ha = new Solution003IV();
-//        ha.rotate(arr, k);
-        SolutionTest test = new SolutionTest();
-        int[] arr = {1, 10};
-        int input = 10;
-
-        test.callbyreference(arr);
-        test.callbyvalue(input);
+        Solution155III ha = new Solution155III();
+        ha.push(10);
+        ha.push(7);
+        System.out.println(ha.peek());
+        System.out.println(ha.getMin());
+        ha.push(-1);
+        ha.push(3);
+        ha.pop();
+        System.out.print(ha.getMin());
+        ha.pop();
 
     }
 }
@@ -383,6 +384,45 @@ class Solution155II{
             return min.get(0);
         }
         return -1;
+    }
+}
+
+class Solution155III{
+    Stack<Integer> stack;
+    Stack<Integer> min;
+
+    public Solution155III(){
+        stack = new Stack<>();
+        min = new Stack<>();
+    }
+
+    public void push(int x){
+        stack.push(x);
+
+        if(!min.empty()){
+            if(x <= min.peek()){
+                min.push(x);
+            }
+        }
+        else{
+            min.push(x);
+        }
+    }
+
+    public void pop(){
+        int pop = stack.pop();
+
+        if(min.peek() == pop){
+            min.pop();
+        }
+    }
+
+    public int peek(){
+        return stack.peek();
+    }
+
+    public int getMin(){
+        return min.peek();
     }
 }
 
