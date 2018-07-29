@@ -6,16 +6,6 @@ import java.util.*;
 public class Main {
 
     public static void main(String[] args) {
-        Solution155III ha = new Solution155III();
-        ha.push(10);
-        ha.push(7);
-        System.out.println(ha.peek());
-        System.out.println(ha.getMin());
-        ha.push(-1);
-        ha.push(3);
-        ha.pop();
-        System.out.print(ha.getMin());
-        ha.pop();
 
     }
 }
